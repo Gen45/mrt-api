@@ -19,12 +19,10 @@ let config = {
             },
             {
                 test: /\.scss$/,
-                loader: ['style-loader', 'css-loader', 'sass-loader']
-                // ,
-                // use: ExtractTextWebpackPlugin.extract({
-                //   fallback: 'style-loader',
-                //   use: ['css-loader', 'sass-loader']
-                // })
+                use: ExtractTextWebpackPlugin.extract({
+                  use: ['css-loader', 'sass-loader'],
+                  fallback: 'style-loader'
+                })
             }
         ]
     },
@@ -37,7 +35,16 @@ let config = {
     devtool: 'eval-source-map',
     node: {
         fs: 'empty'
-    }
+    },
+    plugins: [
+        new ExtractTextWebpackPlugin({
+                filename: 'styles.css',
+                allChunks: true,
+                disable: process.env.NODE_ENV === 'development'
+            }
+        )
+    ]
+
 }
 
 module.exports = config;
@@ -45,7 +52,6 @@ module.exports = config;
 if (process.env.NODE_ENV === 'production') {
     module.exports.plugins.push(
         new webpack.optimize.UglifyJsPlugin(),
-        new OptimizeCSSAssets(),
-        new ExtractTextWebpackPlugin('styles.css')
+        new OptimizeCSSAssets()
     );
 }

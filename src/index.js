@@ -1,7 +1,6 @@
 require('./styles.scss');
-// var fs = require('fs');
-var events = require('./cala');
-var brandsAbrev = require('./cala-brands.js');
+var events = require('../data/cala');
+var brandsAbrev = require('../data/cala-brands.js');
 
 // var brands = JSON.parse(fs.readFileSync('../lib/brands.json', 'utf8'));
 

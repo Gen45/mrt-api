@@ -5,14 +5,16 @@ import newAbrev from '../../data/config/new-abrv';
 import events from '../../data/src/cala.json';
 
 for (let event of events) {
-    event["Brand"] = updateAbrv(toAbr(splitBrands(event["Brand"]), brandsAbrev), newAbrev).toString();
+    event["Brand"] = toAbr(splitBrands(event["Brand"]), brandsAbrev);
+    // event["Brand"] = updateAbrv(event["Brand"]).toString();
+    event["Brand"] = event["Brand"].toString();
 }
 
-const content = JSON.stringify(events);
+const content = JSON.stringify(events, null, 2);
 
 fs.writeFile("./data/exported/cala-updated.json", content, 'utf8', function (err) {
     if (err) {
         return console.log(err);
     }
-    console.log("file updated with new abreviations");
+    console.log("file updated with abreviations");
 });

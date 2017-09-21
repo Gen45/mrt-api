@@ -28,4 +28,4 @@ const brands = {
   "": ["NONE"]
 }
 
-module.exports = brands;
+export default brands;

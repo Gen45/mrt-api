@@ -37,4 +37,4 @@ const newAbrev = {
   NONE: "NONE"
 }
 
-module.exports = newAbrev;
+export default newAbrev;

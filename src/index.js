@@ -1,5 +1,5 @@
-import {splitBrands, updateAbrv, toAbr} from './lib';
 import './styles.scss';
+import {splitBrands, updateAbrv, toAbr} from './lib';
 
 import brandsAbrev from '../data/cala-brands';
 import newAbrev from '../data/new-abrv';

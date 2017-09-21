@@ -4,57 +4,57 @@ $main-color: $blue;
 $white: #ffffdd;
 
 body {
-    background-color: $main-color;
+    background: $main-color;
     color: $white;
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 100;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
 }
 
-p {
-  display: block;
-}
-div {
-  padding: 0.5rem;
-  padding-top: 1.25rem;
-  margin: 0.5rem;
-  background: darken($main-color, 5% );
-  vertical-align: middle;
-  letter-spacing: 0.1rem;
-  border-radius: 0.25rem;
-  position: relative;
-  small {
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  p {
     display: block;
-    font-size: 0.5rem;
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
   }
-  p.top {
-    margin: 0;
+  .event {
+    padding: 0.5rem;
+    padding-top: 1.25rem;
+    margin: 0.5rem;
+    background: darken($main-color, 5% );
     vertical-align: middle;
-    &:after {
-      content: "\00a0";
+    letter-spacing: 0.1rem;
+    border-radius: 0.25rem;
+    position: relative;
+    small {
+      display: block;
+      font-size: 0.5rem;
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+    }
+    p.top {
+      margin: 0;
+      vertical-align: middle;
+      &:after {
+        content: "\00a0";
+      }
+    }
+    p.bottom {
+      border-top: $white 1px solid;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      margin-bottom: 0;
+    }
+    .count {
+      position: absolute;
+      display: block;
+      font-size: 0.5rem;
+      top: 0.5rem;
+      right: 0.5rem;
     }
   }
-  p.bottom {
-    border-top: $white 1px solid;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    margin-bottom: 0;
-  }
-  .count {
-    position: absolute;
-    display: block;
-    font-size: 0.5rem;
-    top: 0.5rem;
-    right: 0.5rem;
-    // background: $white;
-    // color: $main-color;
-    vertical-align: middle;
-  }
+
 }

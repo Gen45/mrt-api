@@ -33,18 +33,17 @@ let config = {
         open: true
     },
     devtool: 'eval-source-map',
-    node: {
-        fs: 'empty'
-    },
     plugins: [
         new ExtractTextWebpackPlugin({
                 filename: 'styles.css',
                 allChunks: true,
-                disable: process.env.NODE_ENV === 'development'
+                disable: process.env.NODE_ENV !== 'production'
             }
         )
-    ]
-
+    ],
+    node: {
+        fs: 'empty'
+    }
 }
 
 module.exports = config;

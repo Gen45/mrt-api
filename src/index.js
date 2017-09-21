@@ -1,64 +1,21 @@
-require('./styles.scss');
-var events = require('../data/cala');
-var brandsAbrev = require('../data/cala-brands.js');
+import {splitBrands, updateAbrv, toAbr} from './lib';
+import './styles.scss';
 
-// var brands = JSON.parse(fs.readFileSync('../lib/brands.json', 'utf8'));
+import brandsAbrev from '../data/cala-brands';
+import newAbrev from '../data/new-abrv';
+import events from '../data/cala.json';
 
-// var inputFile = 'events.json'; //process.argv[2];
-// var outputFile = 'events-transformed.json';
-// var field = process.argv[3];
-// var eventNumber = process.argv[4];
+const root = document.getElementById('root');
 
-// var events = JSON.parse(fs.readFileSync(inputFile, 'utf8'));
-// var transform = JSON.stringify(events)
+for (let event of events) {
+    event["originalBrands"] = splitBrands(event["Brand"]);
+    event["Brand"] = updateAbrv(toAbr(splitBrands(event["Brand"]), brandsAbrev), newAbrev);
 
-// fs.writeFile(outputFile, transform, function(err) {
-//     if(err) {
-//         return console.log(err);
-//     }
-
-//     console.log("The file was saved!");
-// });
-
-// var toAbr = (brands) => {
-//     for (var i = 0; i < brands.length; i++) {
-//         return brandsAbrev[brands[i]] + ((brands.length > 1) ? ("," + toAbr(brands.splice(1))) : "");
-//     }
-// }
-// console.log(brandsAbrev);
-
-var toAbr = (brands) => {
-    var abrevs = [];
-    for (var i = 0; i < brands.length; i++) {
-        abrevs[i] = brandsAbrev[brands[i]];
-    }
-    return abrevs;
-}
-
-// var toAbr = (b) => {
-//     console.log(b);
-//     return brandsAbrev[b[0]] + ((b.length > 1) ? ("," + toAbr(b.splice(1))) : "");
-// }
-
-// var toAbr = ( brands ) => {
-//   return brands.reduce((list, brand) => {
-//     return `${list}, ${brandsAbrev[brand]}`;
-//   })
-// }
-
-for (var i = 0; i < events.length; i++) {
-
-    events[i]["Brand"] = events[i]["Brand"].replace(/,\s/g, ',').split(',');
-    events[i]["originalBrands"] = events[i]["Brand"]
-    events[i]["Brand"] = toAbr(events[i]["Brand"]);
-
-    // document.write(`<p>${events[i]["Brand"]}</p>`);
-
-    document.write(`
-    <div>
-      <small>${events[i]["Id"]}</small>
-      <p class="top">${events[i]["originalBrands"]} <span class="count">${events[i]["Brand"].length}</span></p>
-      <p class="bottom">${events[i]["Brand"]}</p>
-    </div>
-    `);
+    root.innerHTML += `
+    <div id="event-${event["Id"]}" class="event">
+      <small>${event["Id"]}</small>
+      <p class="top">${event["originalBrands"]} <span class="count">${event["originalBrands"].length}/${event["Brand"].length}</span></p>
+      <p class="bottom">${event["Brand"]}</p>
+      </div>
+    `;
 }

@@ -1,8 +1,8 @@
 import fs from 'fs';
 import {splitBrands, updateAbrv, toAbr} from './lib';
-import brandsAbrev from '../data/cala-brands';
-import newAbrev from '../data/new-abrv';
-import events from '../data/cala.json';
+import brandsAbrev from '../../data/config/cala-brands';
+import newAbrev from '../../data/config/new-abrv';
+import events from '../../data/src/cala.json';
 
 for (let event of events) {
     event["Brand"] = updateAbrv(toAbr(splitBrands(event["Brand"]), brandsAbrev), newAbrev).toString();
@@ -10,9 +10,9 @@ for (let event of events) {
 
 const content = JSON.stringify(events);
 
-fs.writeFile("./data/data-updated.json", content, 'utf8', function (err) {
+fs.writeFile("./data/exported/cala-updated.json", content, 'utf8', function (err) {
     if (err) {
         return console.log(err);
     }
-    console.log("The file was saved!");
-}); 
+    console.log("file updated with new abreviations");
+});

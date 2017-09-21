@@ -7,7 +7,7 @@
     "build": "webpack",
     "start": "webpack-dev-server -d --hot --config webpack.config.js --watch",
     "production": "cross-env NODE_ENV=production webpack",
-    "data": "babel-node src/fixcala.js"
+    "fixcala": "babel-node src/js/fixcala && babel-node src/js/cala2us"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",

@@ -922,6 +922,10 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
+byline@~4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/byline/-/byline-4.1.1.tgz#d0d516935eb6761f8be31b5263f76c4640a041a3"
+
 bytes@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.5.0.tgz#4c9423ea2d252c270c41b2bdefeff9bb6b62c06a"
@@ -3063,6 +3067,12 @@ node-sass@^4.5.3:
     request "^2.79.0"
     sass-graph "^2.1.1"
     stdout-stream "^1.4.0"
+
+node-tsv-json@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/node-tsv-json/-/node-tsv-json-0.2.1.tgz#45492254428127116f03a1cef31e6555794cce5a"
+  dependencies:
+    byline "~4.1.1"
 
 nodemon@^1.12.1:
   version "1.12.1"

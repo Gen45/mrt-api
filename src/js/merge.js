@@ -11,8 +11,19 @@ let noCala = usEvents.filter((event) => {
 console.log(noCala);
 
 let globalEvents = calaEvents.concat(noCala);
+let ids = {};
+let newJson = [];
 
-const content = JSON.stringify(globalEvents, null, 2);
+for (let event of globalEvents) {
+    let newEvent = {};
+    const region = event["Owner SubRegion"];
+    ids[region] = ids[region] == null ? 0 : ids[region] + 1;
+    newEvent = event;
+    newEvent["Id"] = `${event["Owner SubRegion"].toUpperCase().replace(' ', '-')}-${ids[region]}`;
+    newJson.push(newEvent);
+}
+
+const content = JSON.stringify(newJson, null, 2);
 
 fs.writeFile("./data/exported/events.json", content, 'utf8', function (err) {
     if (err) {

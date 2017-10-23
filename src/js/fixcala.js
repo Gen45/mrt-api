@@ -4,7 +4,9 @@ import brandsAbrev from '../../data/config/cala-brands';
 import newAbrev from '../../data/config/abrvs';
 import events from '../../data/src/cala.json';
 
+var i = 0;
 for (let event of events) {
+    event["Id"] = "CALA-" + i++;
     event["Brand"] = toAbr(splitBrands(event["Brand"]), brandsAbrev);
     event["Brand"] = event["Brand"].toString();
     event["In-Market Start Date"] = fixDate(event["In-Market Start Date"]);
@@ -19,4 +21,3 @@ fs.writeFile("./data/exported/cala-updated.json", content, 'utf8', function (err
     }
     console.log("file updated with abreviations");
 });
-

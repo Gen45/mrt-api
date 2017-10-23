@@ -1,16 +1,18 @@
 import fs from 'fs';
 import { updateAbrv, splitBrands, fixDate, bool2X } from './lib';
 import { oldAbrev } from '../../data/config/abrvs';
-import events from '../../data/src/us.json';
+import currentEvents from '../../data/src/us-current.json';
+import newEvents from '../../data/src/us-new.json';
 
 let i = 0;
 let newJson = [];
+let events = currentEvents.concat(newEvents);
+console.log(events);
 
 for (let event of events) {
 
     let newEvent = {};
     newEvent["Id"] = `${event["Owner SubRegion"].toUpperCase().replace(' ', '-')}-${i++}`;
-
     newEvent = Object.assign(newEvent, event);
     newEvent["Owner SubRegion"] = newEvent["Owner SubRegion"].toUpperCase().replace(' ', '-');
     newEvent["Sell Start Date"] = fixDate(newEvent["Sell Start Date"]);

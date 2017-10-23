@@ -8,6 +8,7 @@
     "start": "webpack-dev-server -d --hot --config webpack.config.js --watch",
     "production": "cross-env NODE_ENV=production webpack",
     "fix:cala": "babel-node src/js/fixcala && babel-node src/js/cala2us && rm data/exported/cala-updated.json",
+    "fix:us": "babel-node src/js/fixus",
     "import:cala": "babel-node src/js/tsv2json data/src/cala.tsv data/src/cala.json",
     "import:us": "babel-node src/js/tsv2json data/src/us.tsv data/src/us.json",
     "merge": "babel-node src/js/merge"

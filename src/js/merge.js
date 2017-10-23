@@ -2,7 +2,7 @@ import fs from 'fs';
 import { } from './lib';
 
 import calaEvents from '../../data/exported/cala-US.json';
-import usEvents from '../../data/src/us.json';
+import usEvents from '../../data/exported/events-US.json';
 
 let noCala = usEvents.filter((event) => {
     return !(event["Date Submitted"] == "" && event["Owner SubRegion"] == "CALA")

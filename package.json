@@ -11,7 +11,10 @@
     "fix:us": "babel-node src/js/fixus",
     "import:cala": "babel-node src/js/tsv2json data/src/cala.tsv data/src/cala.json",
     "import:us": "babel-node src/js/tsv2json data/src/us.tsv data/src/us.json",
-    "merge": "babel-node src/js/merge"
+    "merge": "babel-node src/js/merge",
+    "data:clean": "rimraf data/src data/exported && cd data/ && mkdir src && mkdir exported",
+    "copy:cala": "mv 'D:/DOWNLOADS/CHROME/CALA MARKETING CALENDAR - CALA.tsv' ./data/src/cala.tsv",
+    "copy:us": "mv 'D:/DOWNLOADS/CHROME/Retail Calendar - CURRENT.tsv' ./data/src/us-current.tsv && mv 'D:/DOWNLOADS/CHROME/Retail Calendar - NEW.tsv' ./data/src/us-new.tsv"
   },
   "keywords": [],
   "author": "",

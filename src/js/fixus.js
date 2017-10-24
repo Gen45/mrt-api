@@ -1,13 +1,16 @@
 import fs from 'fs';
-import { updateAbrv, splitBrands, fixDate, bool2X } from './lib';
+import { updateAbrv, splitBrands, fixDate, bool2X, empty, fromRow } from './lib';
 import { oldAbrev } from '../../data/config/abrvs';
-import currentEvents from '../../data/src/us-current.json';
-import newEvents from '../../data/src/us-new.json';
+import currentEventsSRC from '../../data/src/us-current.json';
+import newEventsSRC from '../../data/src/us-new.json';
 
-let i = 0;
+let i = 1;
 let newJson = [];
+
+let currentEvents = fromRow(currentEventsSRC, 'CURRENT');
+let newEvents = fromRow(newEventsSRC, 'NEW');
+
 let events = currentEvents.concat(newEvents);
-console.log(events);
 
 for (let event of events) {
 
@@ -19,7 +22,10 @@ for (let event of events) {
     newEvent["Sell End Date"] = fixDate(newEvent["Sell End Date"]);
     newEvent["Stay Start Date"] = fixDate(newEvent["Stay Start Date"]);
     newEvent["Stay End Date"] = fixDate(newEvent["Stay End Date"]);
+    newEvent["Campaign Name"] = newEvent["Campaign Name"].trim();
+    newEvent["Description"] = newEvent["Description"].trim();
     newEvent["Brand"] = updateAbrv(splitBrands(event["Brand"]), oldAbrev).toString();
+    newEvent["Brand"] = empty(newEvent["Brand"]) ? "NONE" : newEvent["Brand"];
     newEvent["Events"] = bool2X(newEvent["Events"]);
     newEvent["Media"] = bool2X(newEvent["Media"]);
     newEvent["Content"] = bool2X(newEvent["Content"]);
@@ -31,6 +37,7 @@ for (let event of events) {
     newEvent["PR"] = bool2X(newEvent["PR"]);
     newEvent["Social"] = bool2X(newEvent["Social"]);
     newEvent["Other Channels"] = event["Other Channels"] || "";
+    newEvent["inRow"] = event["inRow"];
     
     newJson.push(newEvent);
 }

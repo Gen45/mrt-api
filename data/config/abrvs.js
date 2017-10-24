@@ -34,12 +34,17 @@ const newAbrev = {
   "TP": "TP",
   "WH": "WH",
   "WI": "WI",
+  "FS": "MH",
+  "GX": "GX",
+  "TREMONT": "TREMONT",
+  "TX": "TX",
   "NONE": "NONE"
 };
 
 const oldAbrev = {
   "AC": "AC",
   "AL": "AL",
+  "AH": "AL",
   "AK": "AK",
   "BL": "BL",
   "CY": "CY",
@@ -49,11 +54,15 @@ const oldAbrev = {
   "EL": "EL",
   "FI": "FI",
   "4P": "FP",
+  "FP": "FP",
+  "MI": "MH",
+  "GP": "GH",
   "GE": "GH",
+  "GH": "GH",
   "JW": "JW",
   "MD": "LM",
   "MEA": "MEA",
-  "MHR": "MHR",
+  "MHR": "MH",
   "MH": "MH",
   "MR": "MR",
   "MVC": "MVC",
@@ -61,6 +70,7 @@ const oldAbrev = {
   "PM": "PM",
   "PH": "PH",
   "BR": "RH",
+  "RH": "RH",
   "RI": "RI",
   "SI": "SI",
   "SH": "SH",
@@ -72,8 +82,13 @@ const oldAbrev = {
   "TS": "TPS",
   "TP": "TP",
   "WH": "WH",
+  "W": "WI",
   "WI": "WI",
+  "FS": "MH",
+  "GX": "GX",
+  "TREMONT": "TREMONT",
+  "TX": "TX",
   "NONE": "NONE"
 };
 
-export {newAbrev, oldAbrev};
+export { newAbrev, oldAbrev };

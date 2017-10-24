@@ -1,5 +1,5 @@
 import fs from 'fs';
-// import {indent} from './lib';
+// import {invertDate} from './lib';
 
 import events from '../../data/exported/cala-updated.json';
 
@@ -19,8 +19,8 @@ for (let event of events) {
     "Program Type": "",
     "Offer": event["Promotion Type"],
     "Segment": event["Consumer Target (Leisure, Group, Business Transient) "],
-    "Campaign Name": event["Promotion/Campaign Name"],
-    "Description": event["Objective and Description (Stakeholder facing promotion description)"],
+    "Campaign Name": event["Promotion/Campaign Name"].trim(),
+    "Description": event["Objective and Description (Stakeholder facing promotion description)"].trim(),
     "Sell Start Date": event["In-Market Start Date"],
     "Sell End Date": event["In-Market End Date"],
     "Stay Start Date": event["In-Market Start Date"],
@@ -36,7 +36,8 @@ for (let event of events) {
     "Loyalty ": (event["Marriott Rewards"] || event["SPG Loyalty"] || event["The Ritz-Carlton Rewards"]) ? "x" : null,
     "PR": event["PR"],
     "Social": event["Social"],
-    "Other Channels": event["Other Channels"] || ""};
+    "Other Channels": event["Other Channels"] || "",
+    "inRow": event["inRow"]};
     
     newJson.push(newEvent);
 }
@@ -47,5 +48,5 @@ fs.writeFile("./data/exported/cala-US.json", content, 'utf8', function (err) {
     if (err) {
         return console.log(err);
     }
-    console.log("US format cala file  saved");
+    console.log("US format cala file saved");
 });

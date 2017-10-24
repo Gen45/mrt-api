@@ -17,7 +17,7 @@ let newJson = [];
 for (let event of globalEvents) {
     let newEvent = {};
     const region = event["Owner SubRegion"];
-    ids[region] = ids[region] == null ? 0 : ids[region] + 1;
+    ids[region] = ids[region] == null ? 1 : ids[region] + 1;
     newEvent = event;
     newEvent["Id"] = `${event["Owner SubRegion"].toUpperCase().replace(' ', '-')}-${ids[region]}`;
     newJson.push(newEvent);

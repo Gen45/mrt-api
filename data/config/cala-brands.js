@@ -2,6 +2,7 @@ const brands = {
   "ALL BRANDS": ["JW", "RC", "MH", "RH", "AK", "MEA", "CY", "AC", "RI", "FI", "SR", "WH", "LC", "SI", "LM", "WI", "TP", "FP", "AL"],
   "ALL MARRIOTT BRANDS": ["JW", "RC", "MH", "RH", "AK", "MEA", "CY", "AC", "RI", "FI"],
   "ALL STARWOOD BRANDS": ["SR", "WH", "LC", "SI", "LM", "WI", "TP", "FP", "AL"],
+  "Luxury Brands": ['RC','SR','JW','LC','BL','WH','ED'],
   "AC Hotels Marriott": ["AC"],
   "Aloft": ["AL"],
   "Autograph Collection Hotels": ["AK"],

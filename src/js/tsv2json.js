@@ -12,6 +12,6 @@ tsv({
     console.error(err);
   }else {
     // console.log(result);
-    console.log('saul goodman')
+    console.log(inputFile, 'saul goodman')
   }
 });
